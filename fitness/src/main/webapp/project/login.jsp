@@ -13,7 +13,7 @@
 	<p class="blind">로그인</p>
         <div class="login-contents">
             <div class="login-wrap">
-            	<form action="login_result.jsp" method="post" name="login">
+            	<form action="login" method="post" name="login">
 	                <div class="ip-ul">
 	                    <div class="tit-box">
 	                        <p class="tit">아이디</p>
@@ -52,10 +52,10 @@
 </html>
 
 <script>
-	function fnLogin() {
+	/* function fnLogin() {
 		var form = document.login;
 		
 		location.href = "login_result.jsp;
 		form.submit();
-	}
+	} */
 </script>
