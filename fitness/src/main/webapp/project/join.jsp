@@ -165,8 +165,8 @@
 	    var pwd_re = document.getElementById('pwd_re');
 	    var name = document.getElementById('name');
 	    var birth = document.getElementById('birth');
+	    var phone = document.getElementById('phone');
 	    var email = document.getElementById('email');
-	    var tel = document.getElementById('tel');
 	    var field = document.getElementById('field');
 	    var memeber = document.getElementsByName('memeber_chk');
 	    
@@ -207,7 +207,7 @@
 	    }			
 	    
 	    /* 전화번호 */
-	    if(!compare(check4, tel,"전화번호는 숫자만 작성해주세요.")){
+	    if(!compare(check4, phone,"전화번호는 숫자만 작성해주세요.")){
 	        return false;
 	    }
 	    
