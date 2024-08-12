@@ -50,7 +50,7 @@ public class LoginDAO {
             if(rs.next()) {
             	isValid = true;
             } else {
-            	
+            	isValid = false;
             }
             rs.close();
             statement.close();
@@ -63,13 +63,26 @@ public class LoginDAO {
     
     public boolean Login(Login login) throws SQLException {
     	boolean isValid = false;
-        String sql = "SELECT * FROM tbl_user WHERE userId = '" + login.getUserId() + "' AND pwd = '" + login.getPwd() + "'";
+        String sql = "SELECT * FROM tbl_user WHERE userId = '" + login.getUserId() + "'";
+        //+ "' AND pwd = '" + login.getPwd() 
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if(rs.next()) {
-            	isValid = true;
+            	String pwd = rs.getString("pwd");
+            	int loginCnt = rs.getInt("LOGIN_CNT");
+            	if(loginCnt >= 5) {
+            		isValid = false;
+            	} else {
+            		if(login.getPwd().equals(pwd)) {
+            			PwdReset(login);
+            			isValid = true;            		
+            		} else {
+            			PwdLong(login);
+            			isValid = false;
+            		}
+            	}
             }
             rs.close();
             statement.close();
@@ -82,7 +95,6 @@ public class LoginDAO {
     
     public void PwdReset(Login login) throws SQLException {
     	String sql = "UPDATE tbl_user SET LOGIN_CNT = 0 WHERE userId = '" + login.getUserId() + "'";
-    	System.out.println(sql);
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();
@@ -96,7 +108,6 @@ public class LoginDAO {
     
     public void PwdLong(Login login) throws SQLException {
     	String sql = "UPDATE tbl_user SET LOGIN_CNT = LOGIN_CNT + 1 WHERE userId = '" + login.getUserId() + "'";
-    	System.out.println(sql);
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();

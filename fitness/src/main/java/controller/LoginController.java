@@ -30,11 +30,9 @@ public class LoginController extends HttpServlet {
             // 모든 사용자 정보를 가져옴
             boolean loginUser = loginDAO.Login(login);
             if(loginUser) {
-            	loginDAO.PwdReset(login);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/project/join.jsp");
                 dispatcher.forward(request, response);
             } else {
-            	loginDAO.PwdLong(login);
             	RequestDispatcher dispatcher = request.getRequestDispatcher("/project/login.jsp");
                 dispatcher.forward(request, response);
             }
