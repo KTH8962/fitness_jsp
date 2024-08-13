@@ -13,7 +13,7 @@
             <p class="blind">메인</p>
             <div class="main-contents">
                 <h2 class="main-tit">강의목록</h2>
-                <div class="class-contents cont1">
+                <div class="class-contents main-cont">
                     <a href="javascript:void(0);" class="class-wrap health">
                         <div class="class">
                             <div class="front">이미지</div>

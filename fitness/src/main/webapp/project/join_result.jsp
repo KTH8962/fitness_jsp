@@ -10,22 +10,21 @@
 </head>
 <body>
 	<jsp:include page="./include/header.jsp"></jsp:include>
-	<p class="blind">비밀번호 찾기</p>
+	<p class="blind">회원가입</p>
         <div class="login-contents">
             <div class="login-wrap">
                 <div class="ip-ul">
                     <div class="tit-box">
-                        <p class="tit">검색결과</p>
+                        <p class="tit">가입완료</p>
                     </div>
                     <div class="bot-box">
-	                    <c:choose>
-	                    	<c:when test="${not empty idFind}">
-	                    		<p class="login-desc">비밀번호는 <b>tea1</b>입니다.</p>
-	                    	</c:when>
-	                    	<c:otherwise>
-	                    		<p class="login-desc">입력하신 정보에 맞는 결과가 없습니다.</p>
-	                    	</c:otherwise>
-	                    </c:choose>   
+               			<p class="login-desc">
+               				안녕하세요. ${joinInfo.name} 님<br>
+               				가입하신 아이디는 <b>${joinInfo.userId}</b> 입니다
+               			</p>
+               			<c:if test="${joinInfo.userRole == 'TEACHER'}">
+               				<p class="login-desc">강사 가입은 관리자 승인이 필요합니다.</p>
+               			</c:if>
                     </div>
                 </div>
                 <div class="btn-box">

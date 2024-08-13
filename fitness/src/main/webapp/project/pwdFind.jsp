@@ -12,7 +12,7 @@
 	<p class="blind">비밀번호 찾기</p>
         <div class="login-contents">
             <div class="login-wrap">
-            	<form action="pwdFind" name="pwdFind">
+            	<form action="find" name="pwdFind">
 	                <div class="ip-ul">
 	                    <div class="tit-box">
 	                        <p class="tit">아이디</p>

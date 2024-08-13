@@ -27,6 +27,7 @@
 	        <script type="text/javascript">
 	            alert('사용가능 한 아이디 입니다.');
 	            window.close();
+	            window.opener.fnCheck(true);
 	        </script>	        
 		</c:otherwise>
 	</c:choose>

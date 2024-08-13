@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import dao.FindDAO;
 import model.Find;
 
-@WebServlet("/project/idFind")
-public class IdFindController extends HttpServlet {
+@WebServlet("/project/find")
+public class FindController extends HttpServlet {
 	private FindDAO idFindDAO;
 
 	public void init() {
@@ -22,13 +22,24 @@ public class IdFindController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId = request.getParameter("userId");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		Find idFind = new Find(name, email);
+		System.out.println(userId);
+		Find Find = new Find();
 		try {
-			String id = idFindDAO.IdFind(idFind);
-			request.setAttribute("idFind", id);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/idFind_result.jsp");
+			String find;
+			if(userId == null) {
+				Find = new Find(name, email);
+				find = idFindDAO.IdFind(Find);
+			} else {			
+				Find = new Find(userId, name, email);
+				find = idFindDAO.PwdFind(Find);
+			}
+			request.setAttribute("find", find);
+			request.setAttribute("name", name);
+			request.setAttribute("userId", userId);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/find_result.jsp");
 			dispatcher.forward(request, response);
 
 		} catch (SQLException e) {

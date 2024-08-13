@@ -5,6 +5,8 @@ public class Find {
 	private String email;
 	private String userId;
 	
+	public Find() {
+	}
 
 	public Find(String name, String email) {
 		this.name = name;

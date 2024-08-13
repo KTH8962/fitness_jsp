@@ -36,7 +36,7 @@ public class FindDAO {
     public String IdFind(Find idFind) throws SQLException {
     	String idInfo = "";
         String sql = "SELECT * FROM tbl_user WHERE name = '" + idFind.getName() + "' AND email = '" + idFind.getEmail() + "'";
-        System.out.println(sql);
+
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();

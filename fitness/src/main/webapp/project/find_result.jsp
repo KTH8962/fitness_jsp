@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="./include/header.jsp"></jsp:include>
-	<p class="blind">아이디 찾기</p>
+	<p class="blind">비밀번호 찾기</p>
         <div class="login-contents">
             <div class="login-wrap">
                 <div class="ip-ul">
@@ -19,8 +19,15 @@
                     </div>
                     <div class="bot-box">
 	                    <c:choose>
-	                    	<c:when test="${not empty idFind}">
-	                    		<p class="login-desc">아이디는 <b>${idFind}</b>입니다.</p>
+	                    	<c:when test="${not empty find}">
+	                    		<c:choose>
+		                    		<c:when test="${not empty userId}">
+			                    		<p class="login-desc">${name}님의 비밀번호는 <b>${find}</b>입니다.</p>
+		                    		</c:when>
+		                    		<c:otherwise>
+		                    			<p class="login-desc">${name}님의 아이디는 <b>${find}</b>입니다.</p>
+		                    		</c:otherwise>
+	                    		</c:choose>
 	                    	</c:when>
 	                    	<c:otherwise>
 	                    		<p class="login-desc">입력하신 정보에 맞는 결과가 없습니다.</p>

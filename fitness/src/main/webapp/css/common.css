@@ -546,10 +546,7 @@ body {
 }
 
 .class-contents {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 0 40px;
+	gap: 40px;
 }
 .class-contents .class-wrap {
 	position: relative;
@@ -641,6 +638,20 @@ body {
 }
 .class-contents .class-wrap.golf .front {
 	background-image: url("../images/class_img_golf.png");
+}
+.class-contents.main-cont {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.class-contents.sub-cont {
+	display: grid;
+	grid-template-columns: repeat(4, 350px);
+	justify-content: center;
+	padding-top: 60px;
+	padding-right: 0px;
+	padding-bottom: 160px;
+	padding-left: 0px;
 }
 
 /** //main_contents **/
@@ -741,6 +752,12 @@ body {
 .login-contents .login-wrap .login-desc b {
 	font-size: 28px;
 	font-weight: bold;
+}
+.login-contents .login-wrap .login-desc + .login-desc {
+	margin-top: 14px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 }
 
 /** //login-contents **/
@@ -1402,14 +1419,16 @@ body {
 
 .tab-default {
 	display: flex;
+	justify-content: center;
 	align-items: center;
-	padding: 0px 40px;
-	border-bottom: 1px solid var(--color-contrastyE0);
-	height: 40px;
+	padding-top: 50px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
 	background-color: var(--base-white);
 }
 .tab-default button {
-	font-size: 14px;
+	font-size: 18px;
 	font-Weight: 700;
 	color: var(--color-contrastyA);
 	transition: all 0.2s;
