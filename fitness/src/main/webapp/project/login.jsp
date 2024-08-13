@@ -40,9 +40,9 @@
             	</form>
                 <div class="find-box">
                     <ul>
-                        <li><a href="javascript:void(0);">아이디 찾기</a></li>
-                        <li><a href="javascript:void(0);">비밀번호 찾기</a></li>
-                        <li><a href="javascript:void(0);">회원가입</a></li>
+                        <li><a href="./idFind.jsp">아이디 찾기</a></li>
+                        <li><a href="./pwdFind.jsp">비밀번호 찾기</a></li>
+                        <li><a href="./join.jsp">회원가입</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,6 +50,13 @@
 	<jsp:include page="./include/footer.jsp"></jsp:include>
 </body>
 </html>
+
+<c:if test="${not empty requestScope.loginAlert}">
+        <script>
+            var loginAlert = "<c:out value='${requestScope.loginAlert}' />";
+            alert(loginAlert);
+        </script>
+    </c:if>
 
 <script>
 	/* function fnLogin() {

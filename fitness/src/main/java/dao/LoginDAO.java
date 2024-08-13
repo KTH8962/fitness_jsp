@@ -6,13 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import model.Login;
 
 public class LoginDAO {
@@ -39,50 +32,37 @@ public class LoginDAO {
             jdbcConnection.close();
         }
     }
-
-    public boolean idCheck(Login login) throws SQLException {
-    	boolean isValid = false;
-        String sql = "SELECT * FROM tbl_user WHERE userId = '" + login.getUserId() + "'";
-        try {
-        	connect();
-        	Statement statement = jdbcConnection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            if(rs.next()) {
-            	isValid = true;
-            } else {
-            	isValid = false;
-            }
-            rs.close();
-            statement.close();
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }        
-        disconnect();
-        return isValid;
-    }
     
-    public boolean Login(Login login) throws SQLException {
-    	boolean isValid = false;
+    public Login Login(Login login) throws SQLException {
+    	Login loinInfo = null;
         String sql = "SELECT * FROM tbl_user WHERE userId = '" + login.getUserId() + "'";
-        //+ "' AND pwd = '" + login.getPwd() 
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if(rs.next()) {
             	String pwd = rs.getString("pwd");
+            	String name = rs.getString("name");
+                String userRole = rs.getString("user_role");
             	int loginCnt = rs.getInt("LOGIN_CNT");
+            	boolean isActive = rs.getBoolean("is_active");
             	if(loginCnt >= 5) {
-            		isValid = false;
+            		loinInfo = new Login("비밀번호 횟수 초과상태입니다. 고객센터에 문의해주세요.");
             	} else {
-            		if(login.getPwd().equals(pwd)) {
-            			PwdReset(login);
-            			isValid = true;            		
+            		if(isActive) {
+            			if(login.getPwd().equals(pwd)) {
+            				PwdReset(login);            			
+            				loinInfo = new Login(login.getUserId(), name, userRole);
+            			} else {
+            				PwdLong(login);
+            				loinInfo = new Login("비밀번호가 틀렸습니다.");
+            			}
             		} else {
-            			PwdLong(login);
-            			isValid = false;
+            			loinInfo = new Login("심사대기중인 아이디입니다. 고객센터에 문의해주세요.");
             		}
             	}
+            } else {
+            	loinInfo = new Login("아이디가 없습니다.");
             }
             rs.close();
             statement.close();
@@ -90,7 +70,7 @@ public class LoginDAO {
         	e.printStackTrace();
         }        
         disconnect();
-        return isValid;
+        return loinInfo;
     }
     
     public void PwdReset(Login login) throws SQLException {
@@ -118,4 +98,5 @@ public class LoginDAO {
         }        
         disconnect();
     }
+    
 }
