@@ -8,6 +8,9 @@
 </head>
 <body>
 <div id="app">
+<%
+    String contextPath = request.getContextPath();
+%>
 <header id="header">
     <div class="header-wrap">
         <nav class="gnb left-gnb">
@@ -28,7 +31,8 @@
         </div>
         <nav class="gnb right-gnb">
             <ul>
-                <li><a href="./class.jsp">강의목록</a></li>
+                <li><a href="<%= contextPath %>/project/class">강의목록</a></li>
+                <!-- <li><a href="./class.jsp">강의목록</a></li> -->
                 <li><a href="./join.jsp">회원가입</a></li>
                 <c:choose>
                 	<c:when test="${not empty sessionScope.userId}">

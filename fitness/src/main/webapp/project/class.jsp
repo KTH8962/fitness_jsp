@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +22,25 @@
 	            <button type="button">개설예정</button>
 	            <button type="button">진행중</button>
 	            <button type="button">종료</button>
+	        </div>
+	        <div class="class-contents sub-cont">
+	        	<c:forEach var="row" items="${boardList}">
+	        		<a href="javascript:void('${row.boardNo}');" class="class-wrap ${row.eNameClass}">
+		                <div class="class">
+		                    <div class="front">이미지</div>
+		                    <div class="back">
+		                        <div>
+		                            <h3 class="class-tit">${row.title}</h3>
+		                            <div class="class-desc-wrap">
+		                                <p class="class-desc"><span>시작 일시 : </span><span>${row.sDate}</span></p>
+		                                <p class="class-desc"><span>종료 일시 : </span><span>${row.eDate}</span></p>
+		                            </div>
+		                        </div>
+		                        <p class="btn-shape">신청하러가기</p>
+		                    </div>
+		                </div>
+		            </a>
+	        	</c:forEach>
 	        </div>
 	        <div class="class-contents sub-cont">
 	            <a href="javascript:void(0);" class="class-wrap health">

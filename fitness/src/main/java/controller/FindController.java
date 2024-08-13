@@ -25,7 +25,7 @@ public class FindController extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		System.out.println(userId);
+		
 		Find Find = new Find();
 		try {
 			String find;

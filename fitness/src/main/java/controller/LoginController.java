@@ -28,7 +28,6 @@ public class LoginController extends HttpServlet {
 		Login login = new Login(userId, pwd);
 		try {
 			Login loinInfo = loginDAO.Login(login);
-			System.out.println(loinInfo.getMessage());
 			if (loinInfo.getMessage() == null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", loinInfo.getUserId());

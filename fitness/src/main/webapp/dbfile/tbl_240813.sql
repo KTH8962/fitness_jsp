@@ -26,24 +26,24 @@ CREATE TABLE IF NOT EXISTS `tbl_board` (
   `TITLE` varchar(50) DEFAULT NULL,
   `CONTENTS` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `HIT` int DEFAULT NULL,
-  `CLASSNO` int DEFAULT NULL,
+  `PROGRAMNO` int DEFAULT NULL,
   `CDATETIME` datetime DEFAULT NULL,
   `UDATETIME` datetime DEFAULT NULL,
   PRIMARY KEY (`BOARDNO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 fitness.tbl_board:~10 rows (대략적) 내보내기
-INSERT INTO `tbl_board` (`BOARDNO`, `USERID`, `TITLE`, `CONTENTS`, `HIT`, `CLASSNO`, `CDATETIME`, `UDATETIME`) VALUES
-	(1, 'tea1', '헬스(초급)', '헬스강습입니다.', 150, 1, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(2, 'admin', '수영(중급)', '수영강습입니다.', 200, 2, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(3, 'tea2', '수영(초급)', '수영강습입니다.', 175, 2, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(4, 'tea1', '헬스(중급)', '헬스강습입니다.', 125, 1, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(5, 'tea1', '헬스(중급)', '헬스강습입니다.', 180, 1, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(6, 'admin', '헬스(초급)', '헬스강습입니다.', 210, 1, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(7, 'admin', '수영(초급)', '수영강습입니다.', 160, 2, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(8, 'tea1', '헬스(중급)', '헬스강습입니다.', 190, 1, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(9, 'tea2', '수영(초급)', '수영강습입니다.', 140, 2, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
-	(10, 'tea1', '헬스(고급)', '헬스강습입니다.', 155, 1, '2024-08-13 17:09:43', '2024-08-13 17:09:49');
+-- 테이블 데이터 fitness.tbl_board:~0 rows (대략적) 내보내기
+INSERT INTO `tbl_board` (`BOARDNO`, `USERID`, `TITLE`, `CONTENTS`, `HIT`, `PROGRAMNO`, `CDATETIME`, `UDATETIME`) VALUES
+	(1, 'tea1', '헬스(초급)', '헬스강습입니다.', 150, 101, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(2, 'tea5', '복싱(중급)', '복싱강습입니다.', 200, 105, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(3, 'tea2', '수영(초급)', '수영강습입니다.', 175, 102, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(4, 'tea1', '헬스(중급)', '헬스강습입니다.', 125, 101, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(5, 'tea1', '헬스(중급)', '헬스강습입니다.', 180, 101, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(6, 'tea3', '요가(초급)', '헬스강습입니다.', 210, 103, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(7, 'tea4', '필라테스(초급)', '수영강습입니다.', 160, 104, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(8, 'tea1', '헬스(중급)', '헬스강습입니다.', 190, 101, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(9, 'tea2', '수영(초급)', '수영강습입니다.', 140, 102, '2024-08-13 17:09:43', '2024-08-13 17:09:49'),
+	(10, 'tea6', '골프(초급)', '골프강습입니다.', 155, 106, '2024-08-13 17:09:43', '2024-08-13 17:09:49');
 
 -- 테이블 fitness.tbl_class 구조 내보내기
 CREATE TABLE IF NOT EXISTS `tbl_class` (
@@ -70,6 +70,23 @@ INSERT INTO `tbl_class` (`CLASSNO`, `PROGRAMNO`, `ROOMNO`, `CLASS_NAME`, `CLASS_
 	(7, 105, 205, '복싱', 28, '2024-09-20 12:00:00', '2024-10-18 14:00:00', 'tea5', 'F'),
 	(8, 106, 206, '골프', 28, '2024-08-20 12:00:00', '2024-09-18 14:00:00', 'tea6', 'F');
 
+-- 테이블 fitness.tbl_program 구조 내보내기
+CREATE TABLE IF NOT EXISTS `tbl_program` (
+  `RROGRAMNO` int NOT NULL AUTO_INCREMENT,
+  `RROGRAM_NAME` varchar(20) DEFAULT NULL,
+  `RROGRAM_ENAME` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`RROGRAMNO`)
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- 테이블 데이터 fitness.tbl_program:~6 rows (대략적) 내보내기
+INSERT INTO `tbl_program` (`RROGRAMNO`, `RROGRAM_NAME`, `RROGRAM_ENAME`) VALUES
+	(101, '헬스', 'health'),
+	(102, '수영', 'swimming'),
+	(103, '요가', 'yoga'),
+	(104, '필라테스', 'pilates'),
+	(105, '복싱', 'boxing'),
+	(106, '골프', 'golf');
+
 -- 테이블 fitness.tbl_user 구조 내보내기
 CREATE TABLE IF NOT EXISTS `tbl_user` (
   `USERID` varchar(20) NOT NULL,
@@ -89,15 +106,15 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 
 -- 테이블 데이터 fitness.tbl_user:~9 rows (대략적) 내보내기
 INSERT INTO `tbl_user` (`USERID`, `PWD`, `PWD_PERIOD`, `NAME`, `BIRTH`, `PHONE`, `EMAIL`, `LOGIN_CNT`, `CREATE_DAY`, `IS_ACTIVE`, `USER_ROLE`, `FIELD`) VALUES
-	('admin', 'admin', '2024-08-12 02:41:13', '관리자', '1980-01-01', '1234567890', 'admin@example.com', 0, '2024-08-12 02:41:13', 1, 'ADMIN', NULL),
-	('tea1', 'tea1', '2024-08-12 02:42:14', '김헬스', '1985-05-15', '2345678901', 'teacher1@example.com', 0, '2024-08-12 02:42:14', 1, 'TEACHER', 'health'),
-	('tea2', 'tea2', '2024-08-12 02:42:14', '이수영', '1990-06-20', '3456789012', 'teacher2@example.com', 5, '2024-08-12 02:42:14', 1, 'TEACHER', 'swimming'),
-	('tea3', 'test1234', '2024-08-13 07:58:04', '박요가', '2000-08-15', '01018541234', 'test1@test.com', 0, '2024-08-13 07:58:04', 1, 'TEACHER', 'yoga'),
-	('tea4', 'test1234', '2024-08-13 07:58:18', '최필라', '2000-08-15', '01011641234', 'test2@test.com', 0, '2024-08-13 07:58:18', 1, 'TEACHER', 'pilates'),
-	('tea5', 'test1234', '2024-08-13 07:58:34', '우복싱', '2000-08-15', '01012771234', 'test3@test.com', 0, '2024-08-13 07:58:34', 1, 'TEACHER', 'boxing'),
-	('tea6', 'test1234', '2024-08-13 07:58:53', '강골프', '2000-08-15', '01012348834', 'test4@test.com', 0, '2024-08-13 07:58:53', 1, 'TEACHER', 'golf'),
-	('test', 'test1234', '2024-08-12 02:42:57', '고객일', '1992-07-25', '4567890123', 'member1@example.com', 0, '2024-08-12 02:42:57', 1, 'MEMBER', NULL),
-	('test2', 'test1234', '2024-08-12 02:42:57', '고객이', '1995-08-30', '5678901234', 'member2@example.com', 0, '2024-08-12 02:42:57', 1, 'MEMBER', NULL);
+	('admin', 'admin', '2024-08-11 17:41:13', '관리자', '1980-01-01', '1234567890', 'admin@example.com', 0, '2024-08-11 17:41:13', 1, 'ADMIN', NULL),
+	('tea1', 'tea1', '2024-08-11 17:42:14', '김헬스', '1985-05-15', '2345678901', 'teacher1@example.com', 0, '2024-08-11 17:42:14', 1, 'TEACHER', 'health'),
+	('tea2', 'tea2', '2024-08-11 17:42:14', '이수영', '1990-06-20', '3456789012', 'teacher2@example.com', 5, '2024-08-11 17:42:14', 1, 'TEACHER', 'swimming'),
+	('tea3', 'test1234', '2024-08-12 22:58:04', '박요가', '2000-08-15', '01018541234', 'test1@test.com', 0, '2024-08-12 22:58:04', 1, 'TEACHER', 'yoga'),
+	('tea4', 'test1234', '2024-08-12 22:58:18', '최필라', '2000-08-15', '01011641234', 'test2@test.com', 0, '2024-08-12 22:58:18', 1, 'TEACHER', 'pilates'),
+	('tea5', 'test1234', '2024-08-12 22:58:34', '우복싱', '2000-08-15', '01012771234', 'test3@test.com', 0, '2024-08-12 22:58:34', 1, 'TEACHER', 'boxing'),
+	('tea6', 'test1234', '2024-08-12 22:58:53', '강골프', '2000-08-15', '01012348834', 'test4@test.com', 0, '2024-08-12 22:58:53', 1, 'TEACHER', 'golf'),
+	('test', 'test1234', '2024-08-11 17:42:57', '고객일', '1992-07-25', '4567890123', 'member1@example.com', 0, '2024-08-11 17:42:57', 1, 'MEMBER', NULL),
+	('test2', 'test1234', '2024-08-11 17:42:57', '고객이', '1995-08-30', '5678901234', 'member2@example.com', 0, '2024-08-11 17:42:57', 1, 'MEMBER', NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
