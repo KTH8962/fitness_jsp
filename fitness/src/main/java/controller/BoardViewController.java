@@ -12,24 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BoardDAO;
-import model.Board;
+import dao.BoardViewDAO;
+import model.BoardView;
 
-@WebServlet("/project/class")
-public class BoardController extends HttpServlet {
-	private BoardDAO boardDAO;
+@WebServlet("/project/classView")
+public class BoardViewController extends HttpServlet {
+	private BoardViewDAO boardViewDAO;
 
 	public void init() {
-		boardDAO = new BoardDAO();
+		boardViewDAO = new BoardViewDAO();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category") == null ? "ALL" : request.getParameter("category");
+		String boardNo = request.getParameter("boardNo");
 
 		try {
-			List<Board> boardList = boardDAO.AllBoard(category);
-			request.setAttribute("boardList", boardList);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/class.jsp");
+			BoardView searchPage = boardViewDAO.viewSearch(boardNo);
+			request.setAttribute("boardView", searchPage);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/classView.jsp");
 			dispatcher.forward(request, response);
 
 		} catch (SQLException e) {

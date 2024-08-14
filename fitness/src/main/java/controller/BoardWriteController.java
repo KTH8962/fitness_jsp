@@ -12,24 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BoardDAO;
-import model.Board;
+import dao.BoardWriteDAO;
+import model.BoardWrite;
 
-@WebServlet("/project/class")
-public class BoardController extends HttpServlet {
-	private BoardDAO boardDAO;
+@WebServlet("/project/classWrite")
+public class BoardWriteController extends HttpServlet {
+	private BoardWriteDAO boardWriteDAO;
 
 	public void init() {
-		boardDAO = new BoardDAO();
+		boardWriteDAO = new BoardWriteDAO();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category") == null ? "ALL" : request.getParameter("category");
 
 		try {
-			List<Board> boardList = boardDAO.AllBoard(category);
-			request.setAttribute("boardList", boardList);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/class.jsp");
+			List<BoardWrite> instructorList = boardWriteDAO.instructorSelect();
+			request.setAttribute("instructorList", instructorList);
+			List<BoardWrite> programList = boardWriteDAO.programSelect();
+			request.setAttribute("programList", programList);
+			List<BoardWrite> roomList = boardWriteDAO.roomSelect();
+			request.setAttribute("roomList", roomList);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/classWrite.jsp");
 			dispatcher.forward(request, response);
 
 		} catch (SQLException e) {

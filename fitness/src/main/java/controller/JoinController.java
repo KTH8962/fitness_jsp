@@ -32,8 +32,8 @@ public class JoinController extends HttpServlet {
 		String email = request.getParameter("email");
 		String userRole = request.getParameter("userRole");
 		String field = request.getParameter("field");
-		System.out.println(name);
 		Join join = new Join(userId, pwd, name, birth, phone, email, userRole, field);
+		
 		try {
 			Join id = joinDAO.Join(join);
 			request.setAttribute("joinInfo", id);

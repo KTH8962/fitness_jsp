@@ -35,17 +35,27 @@ public class BoardDAO {
         }
     }
     
-    public List<Board> AllBoard() throws SQLException {
+    public List<Board> AllBoard(String category) throws SQLException {
     	List<Board> boardList = new ArrayList<>();
-        String sql = "SELECT * FROM "
-        		+ "tbl_board B "
-        		+ "INNER JOIN tbl_class C ON B.PROGRAMNO = C.PROGRAMNO "
-        		+ "INNER JOIN tbl_program P ON B.PROGRAMNO = P.PROGRAMNO";
+        String sql = null;
+        if(category.equals("ALL")) {
+        	sql = "SELECT * FROM "
+            		+ "tbl_board B "
+            		+ "INNER JOIN tbl_class C ON B.BOARDNO = C.CLASSNO "
+            		+ "INNER JOIN tbl_program P ON C.PROGRAMNO = P.PROGRAMNO "
+            		+ "ORDER BY START_DAY_TIME DESC";
+        } else {
+        	sql = "SELECT * FROM "
+            		+ "tbl_board B "
+            		+ "INNER JOIN tbl_class C ON B.BOARDNO = C.CLASSNO "
+            		+ "INNER JOIN tbl_program P ON C.PROGRAMNO = P.PROGRAMNO "
+            		+ "WHERE STATUS = '" + category + "' "
+            		+ "ORDER BY START_DAY_TIME DESC";
+        }
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            System.out.println(sql);            
+            ResultSet rs = statement.executeQuery(sql);  
             while(rs.next()) {
             	String boardNo = rs.getString("boardNo");
             	String title = rs.getString("title");
@@ -64,30 +74,30 @@ public class BoardDAO {
         return boardList;
     }
     
-    public void PwdReset(Board login) throws SQLException {
-    	String sql = "UPDATE tbl_user SET LOGIN_CNT = 0 WHERE userId = ''";
-        try {
-        	connect();
-        	Statement statement = jdbcConnection.createStatement();
-            statement.executeUpdate(sql);
-            statement.close();
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }        
-        disconnect();
-    }
-    
-    public void PwdLong(Board login) throws SQLException {
-    	String sql = "UPDATE tbl_user SET LOGIN_CNT = LOGIN_CNT + 1 WHERE userId = ''";
-        try {
-        	connect();
-        	Statement statement = jdbcConnection.createStatement();
-            statement.executeUpdate(sql);
-            statement.close();
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }        
-        disconnect();
-    }
+//    public void PwdReset(Board login) throws SQLException {
+//    	String sql = "UPDATE tbl_user SET LOGIN_CNT = 0 WHERE userId = ''";
+//        try {
+//        	connect();
+//        	Statement statement = jdbcConnection.createStatement();
+//            statement.executeUpdate(sql);
+//            statement.close();
+//        } catch (Exception e) {
+//        	e.printStackTrace();
+//        }        
+//        disconnect();
+//    }
+//    
+//    public void PwdLong(Board login) throws SQLException {
+//    	String sql = "UPDATE tbl_user SET LOGIN_CNT = LOGIN_CNT + 1 WHERE userId = ''";
+//        try {
+//        	connect();
+//        	Statement statement = jdbcConnection.createStatement();
+//            statement.executeUpdate(sql);
+//            statement.close();
+//        } catch (Exception e) {
+//        	e.printStackTrace();
+//        }        
+//        disconnect();
+//    }
     
 }
