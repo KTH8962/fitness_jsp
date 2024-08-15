@@ -22,24 +22,29 @@ public class LoginController extends HttpServlet {
 		loginDAO = new LoginDAO();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
-		String pwd = request.getParameter("pwd");
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId = request.getParameter("userId") == null ? null : request.getParameter("userId");
+		String pwd = request.getParameter("pwd") == null ? null : request.getParameter("pwd");
 		Login login = new Login(userId, pwd);
 		try {
-			Login loinInfo = loginDAO.Login(login);
-			if (loinInfo.getMessage() == null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("userId", loinInfo.getUserId());
-				session.setAttribute("name", loinInfo.getName());
-				session.setAttribute("userRole", loinInfo.getUserRole());
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/project/index.jsp");
-				dispatcher.forward(request, response);
+			RequestDispatcher dispatcher;
+			if(userId != null) {
+				Login loinInfo = loginDAO.Login(login);
+				if (loinInfo.getMessage() == null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("userId", loinInfo.getUserId());
+					session.setAttribute("name", loinInfo.getName());
+					session.setAttribute("userRole", loinInfo.getUserRole());
+					dispatcher = request.getRequestDispatcher("/project/index.jsp");
+					
+				} else {
+					request.setAttribute("loginAlert", loinInfo.getMessage());
+					dispatcher = request.getRequestDispatcher("/project/login.jsp");
+				}
 			} else {
-				request.setAttribute("loginAlert", loinInfo.getMessage());
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/project/login.jsp");
-				dispatcher.forward(request, response);				
+				dispatcher = request.getRequestDispatcher("/project/login.jsp");
 			}
+			dispatcher.forward(request, response);				
 
 		} catch (SQLException e) {
 			throw new ServletException(e);

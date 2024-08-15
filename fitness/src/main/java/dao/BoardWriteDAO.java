@@ -35,45 +35,50 @@ public class BoardWriteDAO {
         }
     }
     
-    public List<BoardWrite> AllBoardView(String category) throws SQLException {
-    	List<BoardWrite> BoardViewList = new ArrayList<>();
-        String sql = null;
-        if(category.equals("ALL")) {
-        	sql = "SELECT * FROM "
-            		+ "tbl_BoardView B "
-            		+ "INNER JOIN tbl_class C ON B.BoardViewNO = C.CLASSNO "
-            		+ "INNER JOIN tbl_program P ON C.PROGRAMNO = P.PROGRAMNO "
-            		+ "ORDER BY START_DAY_TIME DESC";
-        } else {
-        	sql = "SELECT * FROM "
-            		+ "tbl_BoardView B "
-            		+ "INNER JOIN tbl_class C ON B.BoardViewNO = C.CLASSNO "
-            		+ "INNER JOIN tbl_program P ON C.PROGRAMNO = P.PROGRAMNO "
-            		+ "WHERE STATUS = '" + category + "' "
-            		+ "ORDER BY START_DAY_TIME DESC";
-        }
+    
+    public void boardWrite(BoardWrite boardInfo) throws SQLException {
+    	String title = boardInfo.getTitle();
+    	String instructorId = boardInfo.getInstructorId();
+    	String programNo = boardInfo.getProgramNo();
+    	String roomNo = boardInfo.getRoomNo();
+    	String classNum = boardInfo.getClassNum();
+    	String sDate = boardInfo.getsDate();
+    	String eDate = boardInfo.geteDate();
+    	String contents = boardInfo.getContents();
+    	String boardNo = boardInfo.getBoardNo();
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);  
-            while(rs.next()) {
-            	String BoardViewNo = rs.getString("BoardViewNo");
-            	String title = rs.getString("title");
-            	String sDate = rs.getString("start_day_time");
-            	String eDate = rs.getString("end_day_time");
-            	String eNameClass = rs.getString("program_ename");
-//            	BoardView BoardView = new BoardView(BoardViewNo, title, sDate, eDate, eNameClass);
-//            	BoardViewList.add(BoardView);
-            }
-            rs.close();
+        	Statement statement2 = jdbcConnection.createStatement();
+        	String sql, sql2;
+        	
+        	if(boardNo != null) {
+        		sql = "UPDATE tbl_board SET "
+        				+ "title = '" + title + "', " + "contents = '" + contents + "', "
+        				+ "udatetime = NOW() WHERE boardNo = '" + boardNo + "'";
+        		statement.executeUpdate(sql);
+        		sql2 = "UPDATE tbl_class SET "
+        				+ "programNo = '" + programNo + "', roomNo = '" + roomNo + "',"
+        				+ "class_num = '" + classNum + "', "
+        				+ "start_day_time = '" + sDate + "', end_day_time = '" + eDate + "',"
+        				+ "instructor_id = '" + instructorId + "' WHERE classNo = '" + boardNo +"'";
+        		statement2.executeUpdate(sql2);
+        	} else {        		
+        		sql = "INSERT INTO tbl_board "
+        				+ "VALUES(NULL, '"+ instructorId +"', '" + title + "', '" + contents +"', 0, NOW(), NOW())";
+        		statement.executeUpdate(sql);
+        		sql2 = "INSERT INTO tbl_class "
+        				+ "VALUES(NULL,'" + programNo + "', '" + roomNo + "', '" 
+        				+ classNum + "', 0, '" + sDate + "', '" + eDate + "', '" + instructorId + "', 'F')";
+        		statement2.executeUpdate(sql2);
+        	}
             statement.close();
+            statement2.close();
         } catch (Exception e) {
         	e.printStackTrace();
         }        
-        disconnect();
-        return BoardViewList;
+        disconnect();    	
     }
-    
     // 강사 조회
     public List<BoardWrite> instructorSelect() throws SQLException {
     	List<BoardWrite> instructorList = new ArrayList<>();
@@ -146,17 +151,31 @@ public class BoardWriteDAO {
         return roomList;
     }
     
-//    public void PwdLong(BoardView login) throws SQLException {
-//    	String sql = "UPDATE tbl_user SET LOGIN_CNT = LOGIN_CNT + 1 WHERE userId = ''";
-//        try {
-//        	connect();
-//        	Statement statement = jdbcConnection.createStatement();
-//            statement.executeUpdate(sql);
-//            statement.close();
-//        } catch (Exception e) {
-//        	e.printStackTrace();
-//        }        
-//        disconnect();
-//    }
-    
+    public BoardWrite boardSelect(String boardNo) throws SQLException {
+    	BoardWrite writeList = new BoardWrite();
+    	String sql = "SELECT * FROM tbl_board T "
+    			+ "INNER JOIN tbl_class C ON T.boardNo = C.classNo "
+    			+ "WHERE boardNo = '" + boardNo + "'";
+    	try {
+    		connect();
+    		Statement statement = jdbcConnection.createStatement();
+        	ResultSet rs = statement.executeQuery(sql);
+        	if(rs.next()) {
+        		String title = rs.getString("title");
+        		String instructorId = rs.getString("instructor_id");
+        		String programNo = rs.getString("programNo");
+        		String roomNo = rs.getString("roomNo");
+        		String classNum = rs.getString("class_num");
+        		String sDate = rs.getString("start_day_time");
+        		String eDate = rs.getString("end_day_time");
+        		String contents = rs.getString("contents");
+        		writeList = new BoardWrite(title, instructorId, programNo, roomNo, classNum, sDate, eDate, contents);
+        	}
+        	rs.close();
+        	statement.close();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	return writeList;
+    }
 }

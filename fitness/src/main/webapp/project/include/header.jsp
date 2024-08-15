@@ -39,7 +39,7 @@
 		                <li><a href="./login.jsp">로그아웃</a></li>
                 	</c:when>
                 	<c:otherwise>
-                		<li><a href="./login.jsp">로그인</a></li>
+                		<li><a href="<%= contextPath %>/project/login">로그인</a></li>
                 	</c:otherwise>
                 </c:choose>
             </ul>

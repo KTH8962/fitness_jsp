@@ -25,12 +25,17 @@ public class BoardViewController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String boardNo = request.getParameter("boardNo");
+		String action = request.getParameter("action");
 
 		try {
-			BoardView searchPage = boardViewDAO.viewSearch(boardNo);
-			request.setAttribute("boardView", searchPage);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/classView.jsp");
-			dispatcher.forward(request, response);
+			if("delete".equals(action)) {
+				boardViewDAO.deletePage(boardNo);
+			} else {				
+				BoardView searchPage = boardViewDAO.viewSearch(boardNo);
+				request.setAttribute("boardView", searchPage);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/project/classView.jsp");
+				dispatcher.forward(request, response);
+			}
 
 		} catch (SQLException e) {
 			throw new ServletException(e);

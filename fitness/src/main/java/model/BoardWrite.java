@@ -9,6 +9,7 @@ public class BoardWrite {
 	private String sDate;
 	private String eDate;
 	private String contents;
+	private String boardNo;
 	private String temp;
 	private String temp2;
 	
@@ -29,6 +30,22 @@ public class BoardWrite {
 		this.sDate = sDate;
 		this.eDate = eDate;
 		this.contents = contents;
+	}
+	
+	public BoardWrite(String boardNo, String title, String instructorId, String programNo, String roomNo, String classNum , String sDate, String eDate, String contents) {
+		this.boardNo = boardNo;
+		this.title = title;
+		this.instructorId = instructorId;
+		this.programNo = programNo;
+		this.classNum = classNum;
+		this.roomNo = roomNo;
+		this.sDate = sDate;
+		this.eDate = eDate;
+		this.contents = contents;
+	}
+
+	public String getBoardNo() {
+		return boardNo;
 	}
 
 	public String getTitle() {

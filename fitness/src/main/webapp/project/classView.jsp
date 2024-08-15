@@ -34,7 +34,11 @@
                     </div>
                 </div>
                 <div class="class-bottom">
-                    <button type="button" onclick="history.back(-1)">목록으로</button>
+                    <div class="btn-box">
+                    	<button type="button" onclick="location.href='${pageContext.request.contextPath}/project/class'">목록으로</button>
+	                    <button type="button" onclick="fnModify('${param.boardNo}')">수정하기</button>
+	                    <button type="button" onclick="fnDelete('${param.boardNo}')">삭제하기</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,10 +48,14 @@
 </html>
 
 <script>
-	function fnCategory(type) {
-		location.href="/fitness/project/class?category=" + type;
+	function fnModify(boardNo) {
+		location.href="/fitness/project/classWrite?boardNo=" + boardNo;
 	}
-	function fnBoardView(boardNo) {
-		location.href="/fitness/project/classView?boardNo=" + boardNo;
+	function fnDelete(boardNo) {
+		if(confirm("삭제하시겠습니까?")) {
+			location.href = "${pageContext.request.contextPath}/project/classView?boardNo="+ boardNo + "&action=delete";
+			alert("삭제되었습니다.");
+			location.href = "${pageContext.request.contextPath}/project/class";
+		}
 	}
 </script>

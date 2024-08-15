@@ -35,6 +35,7 @@ public class BoardViewDAO {
         }
     }
     
+    // 게시글보기
     public BoardView viewSearch(String boardNo) throws SQLException {
     	BoardView viewing = new BoardView();
         String sql = "SELECT * FROM tbl_board B INNER JOIN tbl_user U ON B.USERID = U.USERID WHERE boardNo = '" + boardNo + "'";
@@ -61,4 +62,21 @@ public class BoardViewDAO {
         return viewing;
     }
     
+    //게시글 삭제
+    public void deletePage(String boardNo) throws SQLException {
+    	String sql = "DELETE FROM tbl_board WHERE boardNo = '" + boardNo +"'";
+    	String sql2 = "DELETE FROM tbl_class WHERE classNo = '" + boardNo +"'";
+    	try {
+    		connect();
+    		Statement statement = jdbcConnection.createStatement();
+    		Statement statement2 = jdbcConnection.createStatement();
+    		statement.executeUpdate(sql);
+    		statement2.executeUpdate(sql2);
+    		statement.close();
+    		statement2.close();
+    	} catch (Exception e) {
+        	e.printStackTrace();
+        }
+    	disconnect();
+    }
 }

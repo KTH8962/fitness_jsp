@@ -73,31 +73,4 @@ public class BoardDAO {
         disconnect();
         return boardList;
     }
-    
-//    public void PwdReset(Board login) throws SQLException {
-//    	String sql = "UPDATE tbl_user SET LOGIN_CNT = 0 WHERE userId = ''";
-//        try {
-//        	connect();
-//        	Statement statement = jdbcConnection.createStatement();
-//            statement.executeUpdate(sql);
-//            statement.close();
-//        } catch (Exception e) {
-//        	e.printStackTrace();
-//        }        
-//        disconnect();
-//    }
-//    
-//    public void PwdLong(Board login) throws SQLException {
-//    	String sql = "UPDATE tbl_user SET LOGIN_CNT = LOGIN_CNT + 1 WHERE userId = ''";
-//        try {
-//        	connect();
-//        	Statement statement = jdbcConnection.createStatement();
-//            statement.executeUpdate(sql);
-//            statement.close();
-//        } catch (Exception e) {
-//        	e.printStackTrace();
-//        }        
-//        disconnect();
-//    }
-    
 }
