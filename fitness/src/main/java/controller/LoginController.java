@@ -35,8 +35,8 @@ public class LoginController extends HttpServlet {
 					session.setAttribute("userId", loinInfo.getUserId());
 					session.setAttribute("name", loinInfo.getName());
 					session.setAttribute("userRole", loinInfo.getUserRole());
-					dispatcher = request.getRequestDispatcher("/project/index.jsp");
-					
+					response.sendRedirect("/fitness/project/index");
+					return;
 				} else {
 					request.setAttribute("loginAlert", loinInfo.getMessage());
 					dispatcher = request.getRequestDispatcher("/project/login.jsp");

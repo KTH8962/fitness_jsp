@@ -73,4 +73,35 @@ public class BoardDAO {
         disconnect();
         return boardList;
     }
+    
+    public List<Board> MainBoard() throws SQLException {
+    	List<Board> boardList = new ArrayList<>();
+        String sql = "SELECT * FROM "
+        		+ "tbl_board B "
+        		+ "INNER JOIN tbl_class C ON B.BOARDNO = C.CLASSNO "
+        		+ "INNER JOIN tbl_program P ON C.PROGRAMNO = P.PROGRAMNO "
+        		+ "WHERE STATUS = 'F' "
+        		+ "ORDER BY START_DAY_TIME "
+        		+ "LIMIT 8";
+        try {
+        	connect();
+        	Statement statement = jdbcConnection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);  
+            while(rs.next()) {
+            	String boardNo = rs.getString("boardNo");
+            	String title = rs.getString("title");
+            	String sDate = rs.getString("start_day_time");
+            	String eDate = rs.getString("end_day_time");
+            	String eNameClass = rs.getString("program_ename");
+            	Board board = new Board(boardNo, title, sDate, eDate, eNameClass);
+            	boardList.add(board);
+            }
+            rs.close();
+            statement.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }        
+        disconnect();
+        return boardList;
+    }
 }
