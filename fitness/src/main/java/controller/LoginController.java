@@ -23,15 +23,16 @@ public class LoginController extends HttpServlet {
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String userId = request.getParameter("userId") == null ? null : request.getParameter("userId");
 		String pwd = request.getParameter("pwd") == null ? null : request.getParameter("pwd");
 		Login login = new Login(userId, pwd);
+		String userRole = (String) session.getAttribute("userRole");
 		try {
 			RequestDispatcher dispatcher;
 			if(userId != null) {
 				Login loinInfo = loginDAO.Login(login);
 				if (loinInfo.getMessage() == null) {
-					HttpSession session = request.getSession();
 					session.setAttribute("userId", loinInfo.getUserId());
 					session.setAttribute("name", loinInfo.getName());
 					session.setAttribute("userRole", loinInfo.getUserRole());
@@ -41,7 +42,10 @@ public class LoginController extends HttpServlet {
 					request.setAttribute("loginAlert", loinInfo.getMessage());
 					dispatcher = request.getRequestDispatcher("/project/login.jsp");
 				}
-			} else {
+			} else if (userRole != null) {
+				response.sendRedirect("/fitness/project/index");
+				return;
+			}else {
 				dispatcher = request.getRequestDispatcher("/project/login.jsp");
 			}
 			dispatcher.forward(request, response);				

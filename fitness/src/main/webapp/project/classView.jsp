@@ -32,6 +32,17 @@
                     <div class="contents">
                         ${boardView.contents}
                     </div>
+                    <div class="class-cnt-wrap">
+                        <div class="class-info">
+                            <p class="tit">수강인원</p>
+                            <span <c:if test="${boardView.cNumCnt == boardView.cNum}">class="full"</c:if>>${boardView.cNumCnt}</span> / <span>${boardView.cNum}</span>
+                        </div>
+                        <c:if test="${boardView.cNumCnt != boardView.cNum}">
+	                        <div class="btn-box">
+	                            <button type="button" onclick="fnEnroll('${param.boardNo}')">신청하기</button>
+	                        </div>
+                        </c:if>
+                    </div>
                 </div>
                 <div class="class-bottom">
                     <div class="btn-box">
@@ -50,6 +61,13 @@
 <script>
 	function fnModify(boardNo) {
 		location.href="/fitness/project/classWrite?boardNo=" + boardNo;
+	}
+	function fnEnroll(boardNo) {
+		if(confirm("등록하시겠습니까?")) {
+			var replaceUrl = "${pageContext.request.contextPath}/project/classView?boardNo="+ boardNo + "&action=enroll";
+			history.replaceState(null, '', replaceUrl);
+			alert("등록되었습니다.");
+		}
 	}
 	function fnDelete(boardNo) {
 		if(confirm("삭제하시겠습니까?")) {

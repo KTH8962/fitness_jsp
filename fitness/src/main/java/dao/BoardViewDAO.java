@@ -38,7 +38,7 @@ public class BoardViewDAO {
     // 게시글보기
     public BoardView viewSearch(String boardNo) throws SQLException {
     	BoardView viewing = new BoardView();
-        String sql = "SELECT * FROM tbl_board B INNER JOIN tbl_user U ON B.USERID = U.USERID WHERE boardNo = '" + boardNo + "'";
+        String sql = "SELECT * FROM tbl_board B INNER JOIN tbl_user U ON B.USERID = U.USERID INNER JOIN tbl_class C ON B.BOARDNO = C.CLASSNO WHERE boardNo = '" + boardNo + "'";
              
         try {
         	connect();
@@ -51,7 +51,9 @@ public class BoardViewDAO {
             	String hit = rs.getString("hit");
             	String cDate = rs.getString("cdatetime");
             	String uDate = rs.getString("udatetime");
-            	viewing = new BoardView(boardNo, name, title, contents, hit, cDate, uDate);
+            	String cNum = rs.getString("class_num");
+            	String cNumCnt = rs.getString("class_num_cnt");
+            	viewing = new BoardView(boardNo, name, title, contents, hit, cDate, uDate, cNum, cNumCnt);
             }
             rs.close();
             statement.close();

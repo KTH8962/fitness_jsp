@@ -23,9 +23,11 @@
 	            <button type="button" onclick="fnCategory('I')" class="<%= "I".equals(request.getParameter("category")) ? "active": "" %>">진행중</button>
 	            <button type="button" onclick="fnCategory('E')" class="<%= "E".equals(request.getParameter("category")) ? "active": "" %>">종료</button>
 	        </div>
-	        <div class="btn-box">
-                <button type="button" onclick="location.href='/fitness/project/classWrite'">강의올리기</button>
-            </div>
+	        <c:if test="${sessionScope.userRole == 'ADMIN' }">
+	        	<div class="btn-box">
+	                <button type="button" onclick="location.href='/fitness/project/classWrite'">강의올리기</button>
+	            </div>
+	        </c:if>
 	        <div class="class-contents sub-cont">
 	        	<c:forEach var="board" items="${boardList}">
 	        		<a href="javascript:fnBoardView('${board.boardNo}');" class="class-wrap ${board.eNameClass}">

@@ -26,11 +26,11 @@ public class BoardViewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String boardNo = request.getParameter("boardNo");
 		String action = request.getParameter("action");
-
+		System.out.println(action);
 		try {
 			if("delete".equals(action)) {
 				boardViewDAO.deletePage(boardNo);
-			} else {				
+			} else {
 				BoardView searchPage = boardViewDAO.viewSearch(boardNo);
 				request.setAttribute("boardView", searchPage);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/project/classView.jsp");

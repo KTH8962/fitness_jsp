@@ -8,11 +8,13 @@ public class BoardView {
 	private String hit;
 	private String cDate;
 	private String uDate;
+	private String cNum;
+	private String cNumCnt;
 	
 	public BoardView() {
 	}
 	
-	public BoardView(String boardNo, String name, String title, String contents, String hit, String cDate, String uDate) {
+	public BoardView(String boardNo, String name, String title, String contents, String hit, String cDate, String uDate, String cNum, String cNumCnt) {
 		this.boardNo = boardNo;
 		this.name = name;
 		this.title = title;
@@ -20,6 +22,8 @@ public class BoardView {
 		this.hit = hit;
 		this.cDate = cDate;
 		this.uDate = uDate;
+		this.cNum = cNum;
+		this.cNumCnt = cNumCnt;
 	}
 
 	public String getBoardNo() {
@@ -48,5 +52,13 @@ public class BoardView {
 
 	public String getuDate() {
 		return uDate;
+	}
+
+	public String getcNum() {
+		return cNum;
+	}
+
+	public String getcNumCnt() {
+		return cNumCnt;
 	}
 }
