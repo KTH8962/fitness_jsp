@@ -1033,6 +1033,7 @@ body {
 }
 #admin-contents .contents-top {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	padding: 0px 30px;
 	border-bottom: 1px solid var(--color-contrastyE5);
@@ -1046,6 +1047,16 @@ body {
 	padding-right: 44px;
 	padding-bottom: 0px;
 	padding-left: 14px;
+}
+#admin-contents .contents-top .main-btn .main {
+	font-size: 18px;
+	font-Weight: 500;
+	background: right center/18px no-repeat;
+	padding-top: 0px;
+	padding-right: 24px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	background-image: url("../images/ico/ico_moving.png");
 }
 #admin-contents .contents {
 	padding-top: 30px;
