@@ -7,10 +7,9 @@
 <head>
 </head>
 <body>
-<div id="app">
-<%
-    String contextPath = request.getContextPath()+"/project";
-%>
+<%@include file="./adminCheck.jsp"%>
+<div id="app" class="${adminChk ? 'admin': ''}">
+<c:if test="${!adminChk}" >
 <header id="header">
     <div class="header-wrap">
         <nav class="gnb left-gnb">
@@ -34,7 +33,10 @@
                 <li><a href="<%= contextPath %>/class">강의목록</a></li>
                 <c:choose>
                 	<c:when test="${not empty sessionScope.userId}">
-                		<li>${sessionScope.name }</li>
+                		<c:choose>
+                			<c:when test="${sessionScope.userRole == 'ADMIN' }"><li><a href="<%= contextPath %>/admin">${sessionScope.name }</a></li></c:when>
+                			<c:otherwise><li>${sessionScope.name }</li></c:otherwise>
+                		</c:choose>                		
 		                <li><a href="<%= contextPath %>/logut.jsp">로그아웃</a></li>
                 	</c:when>
                 	<c:otherwise>
@@ -46,6 +48,6 @@
         </nav>
     </div>
 </header>
-	
+</c:if>
 </body>
 </html>

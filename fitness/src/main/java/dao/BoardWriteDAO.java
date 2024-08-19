@@ -51,11 +51,10 @@ public class BoardWriteDAO {
         	Statement statement = jdbcConnection.createStatement();
         	Statement statement2 = jdbcConnection.createStatement();
         	String sql, sql2;
-        	
         	if(boardNo != null) {
         		sql = "UPDATE tbl_board SET "
         				+ "title = '" + title + "', " + "contents = '" + contents + "', "
-        				+ "udatetime = NOW() WHERE boardNo = '" + boardNo + "'";
+        				+ "userId = '" + instructorId +"', udatetime = NOW() WHERE boardNo = '" + boardNo + "'";
         		statement.executeUpdate(sql);
         		sql2 = "UPDATE tbl_class SET "
         				+ "programNo = '" + programNo + "', roomNo = '" + roomNo + "',"

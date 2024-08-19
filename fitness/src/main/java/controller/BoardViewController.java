@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,18 +23,32 @@ public class BoardViewController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
 		String boardNo = request.getParameter("boardNo");
 		String action = request.getParameter("action");
-		System.out.println(action);
+		BoardView message = new BoardView();
+		RequestDispatcher dispatcher;
 		try {
 			if("delete".equals(action)) {
 				boardViewDAO.deletePage(boardNo);
+				return;
+			} else if("enroll".equals(action)) {				
+				message = boardViewDAO.enrollPage(boardNo, userId);
+				request.setAttribute("message", message.getMessage());
+				dispatcher = request.getRequestDispatcher("/project/classView.jsp");
+			} else if("cancel".equals(action)) {				
+				message = boardViewDAO.cancelPage(boardNo, userId);
+				request.setAttribute("message", message.getMessage());
+				dispatcher = request.getRequestDispatcher("/project/classView.jsp");
 			} else {
 				BoardView searchPage = boardViewDAO.viewSearch(boardNo);
 				request.setAttribute("boardView", searchPage);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/project/classView.jsp");
-				dispatcher.forward(request, response);
+				String searchBtn = boardViewDAO.viewBtn(boardNo, userId);
+				request.setAttribute("btnView", searchBtn);
+				dispatcher = request.getRequestDispatcher("/project/classView.jsp");
 			}
+			dispatcher.forward(request, response);
 
 		} catch (SQLException e) {
 			throw new ServletException(e);

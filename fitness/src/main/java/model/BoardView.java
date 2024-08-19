@@ -10,8 +10,13 @@ public class BoardView {
 	private String uDate;
 	private String cNum;
 	private String cNumCnt;
+	private String message;
 	
 	public BoardView() {
+	}
+	
+	public BoardView(String message) {
+		this.message = message;
 	}
 	
 	public BoardView(String boardNo, String name, String title, String contents, String hit, String cDate, String uDate, String cNum, String cNumCnt) {
@@ -60,5 +65,9 @@ public class BoardView {
 
 	public String getcNumCnt() {
 		return cNumCnt;
+	}
+
+	public String getMessage() {
+		return message;
 	}
 }

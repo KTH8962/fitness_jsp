@@ -52,17 +52,8 @@
 </html>
 
 <c:if test="${not empty requestScope.loginAlert}">
-        <script>
-            var loginAlert = "<c:out value='${requestScope.loginAlert}' />";
-            alert(loginAlert);
-        </script>
-    </c:if>
-
-<script>
-	/* function fnLogin() {
-		var form = document.login;
-		
-		location.href = "login_result.jsp;
-		form.submit();
-	} */
-</script>
+    <script>
+        var loginAlert = "<c:out value='${requestScope.loginAlert}' />";
+        alert(loginAlert);
+    </script>
+</c:if>

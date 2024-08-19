@@ -144,6 +144,7 @@
 		var sDate = form.sDate;
 		var eDate = form.eDate;
 		var contents = form.contents;
+		var check = /[0-9]/;
 		
 		/* 오늘 날짜 체크용 */
 		var time = new Date();
@@ -161,6 +162,8 @@
 		} else if (compare(roomNo, "강의실을 선택해주세요.")) {
 			return false;
 		} else if (compare(classNum, "인원을 입력해주세요.")) {
+			return false;
+		} else if (compare2(check, classNum, "인원은 숫자만 입력해주세요.")) {
 			return false;
 		} else if (compare(sDate, "시작일을 입력해주세요.")) {
 			return false;
@@ -181,6 +184,15 @@
 	
 	function compare(form, message) {
 		if(form.value == "" || form.value == undefined) {
+			alert(message);
+			form.focus();
+			return true;
+		}
+		return false;
+	}
+	
+	function compare2(check, form, message) {
+		if(!check.test(form.value)) {
 			alert(message);
 			form.focus();
 			return true;

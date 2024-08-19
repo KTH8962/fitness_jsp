@@ -37,18 +37,27 @@
                             <p class="tit">수강인원</p>
                             <span <c:if test="${boardView.cNumCnt == boardView.cNum}">class="full"</c:if>>${boardView.cNumCnt}</span> / <span>${boardView.cNum}</span>
                         </div>
-                        <c:if test="${boardView.cNumCnt != boardView.cNum}">
-	                        <div class="btn-box">
-	                            <button type="button" onclick="fnEnroll('${param.boardNo}')">신청하기</button>
-	                        </div>
-                        </c:if>
+                        <div class="btn-box">
+                        	<c:choose>
+                        		<c:when test="${btnView != null}">
+                        			<button type="button" onclick="fnCancel('${param.boardNo}', '${sessionScope.userId}')">취소하기</button>
+                        		</c:when>
+                        		<c:otherwise>
+                        			<c:if test="${boardView.cNumCnt != boardView.cNum}">
+	                        			<button type="button" onclick="fnEnroll('${param.boardNo}', '${sessionScope.userId}')">신청하기</button>
+                        			</c:if>
+                        		</c:otherwise>
+                        	</c:choose>
+                        </div>
                     </div>
                 </div>
                 <div class="class-bottom">
                     <div class="btn-box">
                     	<button type="button" onclick="location.href='${pageContext.request.contextPath}/project/class'">목록으로</button>
-	                    <button type="button" onclick="fnModify('${param.boardNo}')">수정하기</button>
-	                    <button type="button" onclick="fnDelete('${param.boardNo}')">삭제하기</button>
+                    	<c:if test="${sessionScope.userRole == 'ADMIN' }">
+		                    <button type="button" onclick="fnModify('${param.boardNo}')">수정하기</button>
+		                    <button type="button" onclick="fnDelete('${param.boardNo}')">삭제하기</button>
+                    	</c:if>
                     </div>
                 </div>
             </div>
@@ -62,18 +71,37 @@
 	function fnModify(boardNo) {
 		location.href="/fitness/project/classWrite?boardNo=" + boardNo;
 	}
-	function fnEnroll(boardNo) {
-		if(confirm("등록하시겠습니까?")) {
-			var replaceUrl = "${pageContext.request.contextPath}/project/classView?boardNo="+ boardNo + "&action=enroll";
-			history.replaceState(null, '', replaceUrl);
-			alert("등록되었습니다.");
+	function fnEnroll(boardNo, userId) {
+		if (userId == "" || userId == undefined) {
+			alert("로그인 후 신청 가능합니다.");
+		} else {
+			if(confirm("등록 하시겠습니까?")) {
+				location.href = "${pageContext.request.contextPath}/project/classView?boardNo=" + boardNo + "&action=enroll";
+			}
+		}
+	}
+	function fnCancel(boardNo, userId) {
+		if(confirm("취소 하시겠습니까?")) {
+			location.href = "${pageContext.request.contextPath}/project/classView?boardNo=" + boardNo + "&action=cancel";
 		}
 	}
 	function fnDelete(boardNo) {
 		if(confirm("삭제하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/project/classView?boardNo="+ boardNo + "&action=delete";
+			location.href = "${pageContext.request.contextPath}/project/classView?boardNo=" + boardNo + "&action=delete";
 			alert("삭제되었습니다.");
 			location.href = "${pageContext.request.contextPath}/project/class";
 		}
 	}
+	<c:if test="${not empty requestScope.message}">
+	    var message = "<c:out value='${requestScope.message}' />";
+	    alert(message);
+	    location.href = "${pageContext.request.contextPath}/project/classView?boardNo=" + ${param.boardNo};
+	</c:if>
 </script>
+
+<%-- <c:if test="${not empty requestScope.message}">
+	<script>
+	var message = "<c:out value='${requestScope.message}' />";
+    alert(message);
+	</script>
+</c:if> --%>

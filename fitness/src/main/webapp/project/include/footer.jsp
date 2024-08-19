@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 </head>
 <body>
+<%@include file="./adminCheck.jsp"%>
+<c:if test="${!adminChk}">
 <footer id="footer">
     <div class="footer-wrap">
         <address>
@@ -20,6 +23,14 @@
         </address>
     </div>
 </footer>
+</c:if>
 </div>
 </body>
 </html>
+<script>
+	var check = "<%= check %>";
+	var userRole = "<%= uSession %>";
+	if(userRole !== 'ADMIN' && (check.indexOf("classWrite") > 0 || check.indexOf("admin") > 0)) {
+		location.href="${pageContext.request.contextPath}/project/error.jsp";
+	}
+</script>
