@@ -22,7 +22,7 @@
                  </div>
                  <div class="bot-box">
                      <div class="ip-box ip-ico-box">
-                         <input type="text" value="tea3" onchange="fnCheck()" name="userId" placeholder="아이디는 최소 5자이상 입력해주세요.">
+                         <input type="text" onchange="fnCheck()" name="userId" placeholder="아이디는 최소 5자이상 입력해주세요.">
                          <div class="btn-box type1">
                              <button type="button" onclick="idCheck()">중복체크</button>
                          </div>
@@ -35,7 +35,7 @@
                  </div>
                  <div class="bot-box">
                      <div class="ip-box">
-                         <input type="password" name="pwd" value="test1234" placeholder="비밀번호는 영문자+숫자 조합으로 8자 이상 입력해주세요.">
+                         <input type="password" name="pwd" placeholder="비밀번호는 영문자+숫자 조합으로 8자 이상 입력해주세요.">
                      </div>
                  </div>
              </div>
@@ -45,7 +45,7 @@
                  </div>
                  <div class="bot-box">
                      <div class="ip-box">
-                         <input type="password" id="pwd_re" value="test1234" placeholder="비밀번호를 재입력해주세요.">
+                         <input type="password" id="pwd_re" placeholder="비밀번호를 재입력해주세요.">
                      </div>
                  </div>
              </div>
@@ -55,7 +55,7 @@
                  </div>
                  <div class="bot-box">
                      <div class="ip-box">
-                     	<input type="text" value="김이름" name="name" placeholder="이름을 입력해주세요">
+                     	<input type="text" name="name" placeholder="이름을 입력해주세요">
                      </div>
                  </div>
              </div>
@@ -65,7 +65,7 @@
                  </div>
                  <div class="bot-box">
                      <div class="ip-box">
-                         <input type="date" name="birth" value="2000-08-15" placeholder="생일은 연월일 6자만 입력해주세요. ex) 900101">
+                         <input type="date" name="birth" placeholder="생일은 연월일 6자만 입력해주세요. ex) 900101">
                      </div>
                  </div>
              </div>
@@ -75,7 +75,7 @@
                  </div>
                  <div class="bot-box">
                      <div class="ip-box">
-                         <input type="text" name="phone" value="01012341234" placeholder="전화번호는 -없이 숫자만 입력해주세요.">
+                         <input type="text" name="phone" placeholder="전화번호는 -없이 숫자만 입력해주세요.">
                      </div>
                  </div>
              </div>
@@ -137,7 +137,7 @@
 	// 아이디 중복확인
 	function idCheck() {
 		var join = document.join;
-		window.open("join_idCheck.jsp?userId=" + join.userId.value, "reset", "width=500, height=500");
+		window.open("join_idCheck.jsp?userId=" + join.userId.value, "reset", "width=500, height=200, left=" + (window.innerWidth/2) + ", top="  + (window.innerHeight/2 - 100) + "");
 	}
 	
 	function fnCheck(check) {
@@ -151,10 +151,10 @@
 	// 회원가입 버튼
 	function fnJoin(){
 	    if(idCheckBtn){
-		    var check1 = /^[a-zA-Z0-9]{4,12}$/; // 아이디 정규식
-		    var check2 = /^[a-zA-Z0-9]{6,10}$/; // 패스워드 정규식
+		    var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{5,20}$/; // 아이디 정규식
+		    var check2 = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,50}$/; // 패스워드 정규식
 		    var check3 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
-		    var check4 = /[0-9]/;
+		    var check4 = /^\d+$/;
 		    var check5 = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 		
 		    var form = document.join;

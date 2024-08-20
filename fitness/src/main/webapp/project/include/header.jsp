@@ -34,13 +34,13 @@
                 <c:choose>
                 	<c:when test="${not empty sessionScope.userId}">
                 		<c:choose>
-                			<c:when test="${sessionScope.userRole == 'ADMIN' }"><li><a href="<%= contextPath %>/admin">${sessionScope.name }</a></li></c:when>
-                			<c:otherwise><li>${sessionScope.name }</li></c:otherwise>
+                			<c:when test="${sessionScope.userRole == 'ADMIN'}"><li><a href="<%= contextPath %>/admin">${sessionScope.name}</a></li></c:when>
+                			<c:otherwise><li><a href="<%= contextPath %>/edit">${sessionScope.name}</a></li></c:otherwise>
                 		</c:choose>                		
 		                <li><a href="<%= contextPath %>/logut.jsp">로그아웃</a></li>
                 	</c:when>
                 	<c:otherwise>
-                		<li><a href="<%= contextPath %>/join.jsp">회원가입</a></li>
+                		<li><a href="<%= contextPath %>/join">회원가입</a></li>
                 		<li><a href="<%= contextPath %>/login">로그인</a></li>
                 	</c:otherwise>
                 </c:choose>

@@ -32,6 +32,7 @@ public class JoinDAO {
         }
     }
     
+    // 회원가입
     public Join Join(Join join) throws SQLException {
     	Join joinInfo = new Join();
     	String userId = join.getUserId();
@@ -61,5 +62,5 @@ public class JoinDAO {
         }        
         disconnect();
         return joinInfo;
-    }    
+    }
 }

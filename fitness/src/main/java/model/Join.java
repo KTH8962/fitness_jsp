@@ -11,8 +11,12 @@ public class Join {
 	private String field;
 	private boolean isActive;
 
-	public Join() {
-		
+	public Join() {}
+	
+	public Join(String userId, String name, String userRole) {
+		this.userId = userId;
+		this.name = name;
+		this.userRole = userRole;
 	}
 	
 	public Join(String userId, String pwd, String name, String birth, String phone, String email, String userRole, String field) {
@@ -24,12 +28,6 @@ public class Join {
 		this.email = email;
 		this.userRole = userRole;
 		this.field = field;
-	}
-	
-	public Join(String userId, String name, String userRole) {
-		this.userId = userId;
-		this.name = name;
-		this.userRole = userRole;
 	}
 
 	public String getUserId() {

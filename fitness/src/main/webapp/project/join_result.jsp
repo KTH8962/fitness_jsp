@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="btn-box">
-                    <button type="button" class="btn-default btn-red" onclick="location.href='./login.jsp'">로그인으로 이동</button>
+                    <button type="button" class="btn-default btn-red" onclick="location.href='./login'">로그인으로 이동</button>
                 </div>
             </div>
         </div>

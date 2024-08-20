@@ -21,7 +21,7 @@ public class JoinController extends HttpServlet {
 		joinDAO = new JoinDAO();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 요청 인코딩을 UTF-8로 설정
 	    response.setContentType("text/html; charset=UTF-8"); // 응답 인코딩을 UTF-8로 설정
 		String userId = request.getParameter("userId");
@@ -32,14 +32,18 @@ public class JoinController extends HttpServlet {
 		String email = request.getParameter("email");
 		String userRole = request.getParameter("userRole");
 		String field = request.getParameter("field");
-		Join join = new Join(userId, pwd, name, birth, phone, email, userRole, field);
 		
 		try {
-			Join id = joinDAO.Join(join);
-			request.setAttribute("joinInfo", id);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/project/join_result.jsp");
+			RequestDispatcher dispatcher;
+			if(userId != null) {
+				Join join = new Join(userId, pwd, name, birth, phone, email, userRole, field);
+				Join id = joinDAO.Join(join);
+				request.setAttribute("joinInfo", id);
+				dispatcher = request.getRequestDispatcher("/project/join_result.jsp");
+			} else {
+				dispatcher = request.getRequestDispatcher("/project/join.jsp");
+			}
 			dispatcher.forward(request, response);
-
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		}

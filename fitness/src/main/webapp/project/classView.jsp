@@ -19,7 +19,13 @@
         <div class="sub-contents board-view-type">
             <div class="class-view">
                 <div class="class-view-top">
-                    <h3 class="tit">${boardView.title}</h3>
+                    <h3 class="tit">
+                    	<c:choose>
+                      		<c:when test="${boardView.status == 'E'}">[종료]</c:when>
+                      		<c:when test="${boardView.status == 'I'}">[진행중]</c:when>
+                      	</c:choose>
+                    	${boardView.title}
+                    </h3>
                     <div class="top-info">
                         <p class="name">${boardView.name}</p>
                         <p class="date">${boardView.cDate}</p>
@@ -37,6 +43,7 @@
                             <p class="tit">수강인원</p>
                             <span <c:if test="${boardView.cNumCnt == boardView.cNum}">class="full"</c:if>>${boardView.cNumCnt}</span> / <span>${boardView.cNum}</span>
                         </div>
+                        <c:if test="${boardView.status == 'F'}">
                         <div class="btn-box">
                         	<c:choose>
                         		<c:when test="${btnView != null}">
@@ -49,6 +56,7 @@
                         		</c:otherwise>
                         	</c:choose>
                         </div>
+                        </c:if>
                     </div>
                 </div>
                 <div class="class-bottom">

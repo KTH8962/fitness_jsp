@@ -10,6 +10,7 @@ public class BoardView {
 	private String uDate;
 	private String cNum;
 	private String cNumCnt;
+	private String status;
 	private String message;
 	
 	public BoardView() {
@@ -19,7 +20,7 @@ public class BoardView {
 		this.message = message;
 	}
 	
-	public BoardView(String boardNo, String name, String title, String contents, String hit, String cDate, String uDate, String cNum, String cNumCnt) {
+	public BoardView(String boardNo, String name, String title, String contents, String hit, String cDate, String uDate, String cNum, String cNumCnt, String status) {
 		this.boardNo = boardNo;
 		this.name = name;
 		this.title = title;
@@ -29,6 +30,7 @@ public class BoardView {
 		this.uDate = uDate;
 		this.cNum = cNum;
 		this.cNumCnt = cNumCnt;
+		this.status = status;
 	}
 
 	public String getBoardNo() {
@@ -65,6 +67,10 @@ public class BoardView {
 
 	public String getcNumCnt() {
 		return cNumCnt;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 	public String getMessage() {
