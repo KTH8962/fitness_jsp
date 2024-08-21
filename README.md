@@ -1,2 +1,2 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KTH8962)](https://github.com/KTH8962/github-readme-stats)
-![mazandi profile](http://mazandi.herokuapp.com/api?handle={KTH8962}&theme=warm)
+![mazandi profile](http://mazandi.herokuapp.com/api?handle=KTH8962&theme=warm)
