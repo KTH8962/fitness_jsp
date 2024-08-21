@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=FF334B&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontSize=50)
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=ff334b&fontSize=50)
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KTH8962)](https://github.com/KTH8962/github-readme-stats)
