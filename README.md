@@ -1,7 +1,5 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=ff334b&fontSize=50)
+![header](https://capsule-render.vercel.app/api?type=wave&color=FF5C6F&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=ff334b&fontSize=50)
 
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KTH8962)](https://github.com/KTH8962/github-readme-stats)
 
 
 # SPORTS CENTER PROJECT
@@ -9,7 +7,7 @@
 1차 미니프로젝트
 
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=footer)
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=FF5C6F&height=200&section=footer)
 
 ### 줄바꿈
 줄바꿈은 엔터 2번(공백 1줄) 있어야
