@@ -9,7 +9,7 @@
 1차 미니프로젝트
 
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=400&section=footer)
 
 ### 줄바꿈
 줄바꿈은 엔터 2번(공백 1줄) 있어야
