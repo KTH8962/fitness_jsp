@@ -82,6 +82,7 @@
 	function fnEnroll(boardNo, userId) {
 		if (userId == "" || userId == undefined) {
 			alert("로그인 후 신청 가능합니다.");
+			location.href = "${pageContext.request.contextPath}/project/login"
 		} else {
 			if(confirm("등록 하시겠습니까?")) {
 				location.href = "${pageContext.request.contextPath}/project/classView?boardNo=" + boardNo + "&action=enroll";

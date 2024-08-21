@@ -19,7 +19,7 @@
    	<c:choose>
 		<c:when test="${not empty idCheck.rows[0]}">
 			<script type="text/javascript">
-	            alert('사용가능 불가능한 아이디 입니다.');
+	            alert('사용 불가능 한 아이디 입니다.');
 	            window.close();
 	        </script>
 		</c:when>
