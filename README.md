@@ -2,11 +2,14 @@
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KTH8962)](https://github.com/KTH8962/github-readme-stats)
-<img height="32" width="32" src="https://cdn.simpleicons.org/simpleicons/4479A1" />
+
 
 # SPORTS CENTER PROJECT
 
 1차 미니프로젝트
+
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
 
 ### 줄바꿈
 줄바꿈은 엔터 2번(공백 1줄) 있어야
