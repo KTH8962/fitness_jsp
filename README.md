@@ -6,6 +6,8 @@
 
 1차 미니프로젝트
 
+<img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/>
+<img src="https://img.shields.io/badge/MySQL-ffca28?style=flat-square&logo=MySQL&logoColor=white"/>
 
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=FF5C6F&height=200&section=footer)
 
