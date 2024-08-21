@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=wave&color=7598f7&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=555555&fontSize=50)
+![header](https://capsule-render.vercel.app/api?type=waving&color=7598f7&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=555555&fontSize=50)
 
 
 
