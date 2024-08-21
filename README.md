@@ -6,86 +6,14 @@
 
 1차 미니프로젝트
 
+---
+
+## 사용 언어
+
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
+
+## 사용 툴
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
 
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=FF5C6F&height=200&section=footer)
 
-### 줄바꿈
-줄바꿈은 엔터 2번(공백 1줄) 있어야
-합니다.
-
-이렇게
-
----
-### 제목 (# 이용하기, 새로운 줄에서 #을 입력하고 제목 작성하기. #의 개수에 따라 크기 달라짐)
-
-# 1개
-## 2개
-### 3개
-###### 6개(max)
-
----
-
-### 라인 
--(하이픈) 이나 *(별, 아스터리스크) 를 3개이상 작성하면 됩니다.
-
-------------
-***
-이렇게
-
----
-
-### 불릿
-(+, -) 를 앞에 붙이면 됩니다.
-
-+ 안녕
-+ 하세요
-- 반갑
-- 습니다.
-+ 들여 쓰기하고 싶으면
-  + 탭으로 한칸 들어와서
-  + 작성하세요
-+ ㅋㅋㅋ
-
---- 
-
-### 인덱싱
-순서가 중요하면 앞에 숫자를 붙이세요
-
-1. 1번 ㅋ
-2. 2번 ㅋ
-3. 3번 ㅋ
-   + 같이써도 되고
-   + ㅋㅋㅋ
-4. ㅎㅎㅎ
-
----
-
-### 텍스트 활용
-
-텍스트에 별표나 언더바(*, _) 1개, 2개, 3개 넣어보기
-
-*1개짜리*
-
-**2개 짜리**
-
-***3개 짜리***
-
-텍스트 양쪽에 (~) 도 넣어 보기
-
-~이렇게~
-
-
----
-
-### 인용구
-
-텍스트 앞에 >를 넣으면 인용구
-> 넣어보세요
-> ㅎㅎㅎ
-> > 2개 넣으면 이렇게 됨
-
----
-
-### 링크
-링크 걸고 싶으면 (<, >) 이걸로 감싸세요.
