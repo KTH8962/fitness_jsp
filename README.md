@@ -1,7 +1,9 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KTH8962)](https://github.com/KTH8962/github-readme-stats)
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=KTH8962)](https://github.com/anuraghazra/github-readme-stats)
 
-# sample
+
+# SPORTS CENTER PROJECT
+
+1차 미니프로젝트
 
 ### 줄바꿈
 줄바꿈은 엔터 2번(공백 1줄) 있어야
