@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=7598f7&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=555555&fontSize=50)
+![header](https://capsule-render.vercel.app/api?type=waving&color=7598f7&height=300&section=header&text=SPORTS%20CENTER%20PROJECT&fontColor=FF5C6F&fontSize=50)
 
 
 
@@ -15,5 +15,5 @@
 ## 사용 툴
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=FF5C6F&height=200&section=footer)
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=7598f7&height=200&section=footer)
 
