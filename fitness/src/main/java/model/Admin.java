@@ -42,10 +42,10 @@ public class Admin {
 		this.temp3 = temp3;
 	}
 	
-	public Admin(String enrollNo, String name, String classNo, String enrollDate) {
+	public Admin(String enrollNo, String name, String programName, String enrollDate) {
 		this.enrollNo = enrollNo;
 		this.name = name;
-		this.classNo = classNo;
+		this.programName = programName;
 		this.enrollDate = enrollDate;
 	}
 	

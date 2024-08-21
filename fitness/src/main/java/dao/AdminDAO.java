@@ -136,7 +136,10 @@ public class AdminDAO {
     	List<Admin> enrollList = new ArrayList<>();
         String sql = "SELECT * FROM "
         		+ "tbl_enroll E "
-        		+ "INNER JOIN tbl_user U ON E.USERID = U.USERID";
+        		+ "INNER JOIN tbl_user U ON E.USERID = U.USERID "
+        		+ "INNER JOIN tbl_class C ON E.CLASSNO = C.CLASSNO "
+        		+ "INNER JOIN tbl_program P ON P.PROGRAMNO = C.PROGRAMNO";
+        System.out.println(sql);
         try {
         	connect();
         	Statement statement = jdbcConnection.createStatement();
@@ -144,9 +147,9 @@ public class AdminDAO {
             while(rs.next()) {
             	String enrollNo = rs.getString("enrollNo");
             	String name = rs.getString("name");
-            	String classNo = rs.getString("classNo");
+            	String programName = rs.getString("program_Name");
             	String enrollDate = rs.getString("enroll_date");
-            	Admin enroll = new Admin(enrollNo, name, classNo, enrollDate);
+            	Admin enroll = new Admin(enrollNo, name, programName, enrollDate);
             	enrollList.add(enroll);
             }
             rs.close();

@@ -72,13 +72,13 @@
 		                        <div class="tbody">
 		                        	<c:forEach var="user" items="${userList}">
 		                            <div class="tr">
-		                                <div class="td">${user.userId}</div>
+		                                <div class="td"><p class="WTO" title="${user.userId}">${user.userId}</p></div>
 		                                <div class="td">${user.pwd}</div>
 		                                <div class="td">${user.pwdChanged}</div>
 		                                <div class="td">${user.name}</div>
 		                                <div class="td">${user.birth}</div>
 		                                <div class="td">${user.phone}</div>
-		                                <div class="td">${user.email}</div>
+		                                <div class="td"><p class="WTO" title="${user.email}">${user.email}</p></div>
 		                                <div class="td">${user.loginCnt}</div>
 		                                <div class="td">${user.createDay}</div>
 		                                <div class="td">${user.isActive}</div>
@@ -155,7 +155,7 @@
 	                                <div class="tr">
 	                                    <div class="th">번호</div>
 	                                    <div class="th">수강생이름</div>
-	                                    <div class="th">강의번호</div>
+	                                    <div class="th">강의명</div>
 	                                    <div class="th">강의신청일</div>
 	                                </div>
 	                            </div>
@@ -164,7 +164,7 @@
 	                                <div class="tr">
 	                                    <div class="td">${enroll.enrollNo}</div>
 	                                    <div class="td">${enroll.name}</div>
-	                                    <div class="td">${enroll.classNo}</div>
+	                                    <div class="td">${enroll.programName}</div>
 	                                    <div class="td">${enroll.enrollDate}</div>
 	                                </div>
 	                            	</c:forEach>
