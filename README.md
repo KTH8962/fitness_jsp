@@ -32,6 +32,6 @@ jsp 와 mvc를 이용하여 회원가입 및 로그인 기능, 아이디+비밀�
 
 ## 💻 사용 툴
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
-
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=7598f7&height=200&section=footer)
+![Github](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
