@@ -2,7 +2,7 @@
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=KTH8962)](https://github.com/KTH8962/github-readme-stats)
-
+<img height="32" width="32" src="https://cdn.simpleicons.org/simpleicons/00ccff99" />
 
 # SPORTS CENTER PROJECT
 
